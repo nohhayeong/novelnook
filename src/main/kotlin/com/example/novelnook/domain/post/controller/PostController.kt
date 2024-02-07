@@ -1,5 +1,7 @@
 package com.example.novelnook.domain.post.controller
 
+import com.example.novelnook.domain.post.dto.PostRequest
+import com.example.novelnook.domain.post.dto.PostResponse
 import com.example.novelnook.domain.post.service.PostService
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
@@ -34,7 +36,7 @@ class PostController(
     }
 
     @PostMapping
-    fun createPost(@RequestBody request:PostRequest) : ResponseEntity<PostResponse>{
+    fun createPost(@RequestBody request: PostRequest) : ResponseEntity<PostResponse>{
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(postService.createPost(request))
