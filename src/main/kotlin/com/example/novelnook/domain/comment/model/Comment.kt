@@ -8,11 +8,16 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "comment")
 class Comment(
-    @Column
-    var content: String,
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    val user: User,
 
-    @ManyToOne @JoinColumn(name = "user_id") val user: User,
-    @ManyToOne @JoinColumn(name = "post_id") val post: Post
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    val post: Post,
+    
+    @Column
+    var content: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

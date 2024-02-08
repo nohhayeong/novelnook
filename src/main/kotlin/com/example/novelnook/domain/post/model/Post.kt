@@ -7,13 +7,15 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "post")
 class Post(
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    val user: User,
+
     @Column
     var title: String,
 
     @Column
-    var content: String,
-
-    @ManyToOne @JoinColumn(name = "user_id") val user: User
+    var content: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
