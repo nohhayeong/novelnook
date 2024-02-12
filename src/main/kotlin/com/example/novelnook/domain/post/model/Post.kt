@@ -1,5 +1,6 @@
 package com.example.novelnook.domain.post.model
 
+import com.example.novelnook.domain.post.dto.PostResponse
 import com.example.novelnook.domain.user.model.User
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -23,4 +24,13 @@ class Post(
 
     @Column(name = "created_at", updatable = false)
     val createdAt: LocalDateTime = LocalDateTime.now()
+}
+
+fun Post.toResponse(): PostResponse {
+    return PostResponse(
+        nickname = user.nickname,
+        title = title,
+        content = content,
+        createdAt = createdAt
+    )
 }
